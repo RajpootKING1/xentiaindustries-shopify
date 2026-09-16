@@ -1,0 +1,35 @@
+# ==============================================================================
+# Xentia Industries - Surgical Instrument Manufacturing Facility
+# Robots.txt crawler configuration
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Allow: /Assets/
+Allow: /css/
+Allow: /js/
+Disallow: /account.html
+Disallow: /cart*
+Disallow: /checkout*
+Disallow: /*?*query=*
+Disallow: /*?*filter=*
+
+# AI & LLM Search Crawlers
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+
+# Sitemap Location
+Sitemap: https://xentiaindustries.com/sitemap.xml

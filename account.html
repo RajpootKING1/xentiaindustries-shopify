@@ -5,6 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Customer Account & B2B Portal | Xentia Industries</title>
   <meta name="description" content="Sign in or register for your verified medical buyer account with Xentia Industries. Track custom orders, RFQ quotations, and technical instrument specifications.">
+  <link rel="canonical" href="https://xentiaindustries.com/account.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:site_name" content="Xentia Industries">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Customer Account & B2B Portal | Xentia Industries">
+  <meta property="og:description" content="Sign in or register for your verified medical buyer account with Xentia Industries. Track custom orders, RFQ quotations, and technical instrument specifications.">
+  <meta property="og:url" content="https://xentiaindustries.com/account.html">
+  <meta property="og:image" content="https://xentiaindustries.com/Assets/product-images/hero_surgical_showcase.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Xentia Industries B2B Client Portal">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Customer Account & B2B Portal | Xentia Industries">
+  <meta name="twitter:description" content="Sign in or register for your verified medical buyer account with Xentia Industries.">
+  <meta name="twitter:image" content="https://xentiaindustries.com/Assets/product-images/hero_surgical_showcase.webp">
+
+  <!-- Structured Data / JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://xentiaindustries.com/account.html#webpage",
+        "name": "Customer Account & B2B Portal",
+        "description": "Institutional medical buyer account portal for order status tracking, quotation archives, and factory communication.",
+        "url": "https://xentiaindustries.com/account.html",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://xentiaindustries.com/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://xentiaindustries.com/account.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://xentiaindustries.com/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "My Account",
+            "item": "https://xentiaindustries.com/account.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <meta name="theme-color" content="#0A0A0C">
 
   <!-- Favicons -->
@@ -121,8 +177,37 @@
   </nav>
 
   <!-- Main Auth Section -->
-  <main id="main-content" class="auth-page-section">
-    <div id="auth-container" style="width: 100%; display: flex; justify-content: center;">
+  <main id="main-content" class="auth-page-section" style="padding-top: 0;">
+    
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumb-trail" aria-label="Breadcrumb Navigation" style="background: rgba(14, 14, 18, 0.6); border-bottom: var(--border-hairline); padding: var(--space-3) 0;">
+      <div class="container">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList" style="display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0; margin: 0;">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="index.html" itemprop="item" style="color: var(--color-steel-medium);"><span itemprop="name">Home</span></a>
+            <meta itemprop="position" content="1" />
+          </li>
+          <li aria-hidden="true" style="color: var(--color-steel-dark);">&rsaquo;</li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+            <span itemprop="name" style="color: var(--color-gold-base);">My Account</span>
+            <meta itemprop="position" content="2" />
+          </li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Account Page Title / Hero -->
+    <div class="container text-center" style="padding: var(--space-10) 0 var(--space-4) 0;">
+      <span class="badge badge-gold" style="margin-bottom: var(--space-3);">CLIENT &amp; PROCUREMENT ACCESS</span>
+      <h1 class="section-title" style="font-size: var(--text-3xl); margin-bottom: var(--space-2);">
+        INSTITUTIONAL CLIENT PORTAL <span class="section-title-highlight">&amp; B2B ACCOUNT</span>
+      </h1>
+      <p class="section-subtitle" style="font-size: var(--text-sm); max-width: 600px; margin: 0 auto;">
+        Sign in to manage active surgical RFQ submissions, inspect order milestones, or access institutional hospital pricing.
+      </p>
+    </div>
+
+    <div id="auth-container" style="width: 100%; display: flex; justify-content: center; padding-bottom: var(--space-12);">
       <!-- Populated dynamically by AuthController -->
     </div>
   </main>
