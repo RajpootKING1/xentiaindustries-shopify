@@ -104,7 +104,7 @@
                 </p>
                 <p class="text-xs text-xsilver flex items-center gap-2">
                     <i class="fa-solid fa-phone text-xgold"></i>
-                    <a href="tel:+923459656454" class="hover:text-xgold">+92 345 9656454</a>
+                    <a href="tel:+923497400818" class="hover:text-xgold">+92 349 7400818</a>
                 </p>
                 <p class="text-xs text-xsilver flex items-center gap-2">
                     <i class="fa-solid fa-envelope text-xgold"></i>

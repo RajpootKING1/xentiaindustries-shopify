@@ -57,7 +57,7 @@ requiredPages.forEach(file => {
     assert(content.includes('<!DOCTYPE html>'), `${file} has valid HTML5 doctype`);
     assert(content.includes('mobile-bottom-app-bar'), `${file} contains Native Mobile Bottom App Bar`);
     assert(content.includes('social-icon-btn') || content.includes('social-icons-group'), `${file} contains Unified Social Media handles`);
-    assert(content.includes('+92 345 9656454'), `${file} contains official Sialkot factory hotline (+92 345 9656454)`);
+    assert(content.includes('+92 349 7400818'), `${file} contains official Sialkot factory hotline (+92 349 7400818)`);
   }
 });
 
@@ -72,7 +72,7 @@ assert(contactHtml.includes('id="contact-name"'), 'contact.html contains name in
 assert(contactHtml.includes('id="contact-email"'), 'contact.html contains email input');
 assert(contactHtml.includes('id="contact-phone"'), 'contact.html contains phone/WhatsApp input');
 assert(contactHtml.includes('id="contact-category"') || contactHtml.includes('id="contact-discipline"'), 'contact.html contains surgical discipline selector');
-assert(contactHtml.includes('wa.me/923459656454'), 'contact.html contains direct WhatsApp desk link');
+assert(contactHtml.includes('wa.me/923497400818'), 'contact.html contains direct WhatsApp desk link');
 
 const accountHtml = fs.readFileSync(path.join(__dirname, 'account.html'), 'utf-8');
 assert(accountHtml.includes('id="auth-container"'), 'account.html contains dynamic authentication mount container');

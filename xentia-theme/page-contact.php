@@ -118,7 +118,7 @@ get_header();
                     <div>
                         <strong class="block text-white font-montserrat text-xs uppercase">Phone & WhatsApp</strong>
                         <p class="text-xs text-xsilver mt-1">
-                            <a href="tel:+923459656454" class="hover:text-xgold transition">+92 345 9656454</a><br>
+                            <a href="tel:+923497400818" class="hover:text-xgold transition">+92 349 7400818</a><br>
                             <span class="text-[10px] text-xsilver-dark">24/7 International Desk</span>
                         </p>
                     </div>
@@ -143,7 +143,7 @@ get_header();
                 <i class="fa-brands fa-whatsapp text-4xl text-emerald-400"></i>
                 <h4 class="font-cinzel text-base font-bold text-white uppercase">INSTANT WHATSAPP QUOTE</h4>
                 <p class="text-xs text-xsilver">Connect directly with our senior sales manager for quick sample dispatch.</p>
-                <a href="https://wa.me/923459656454" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-emerald-500 text-black font-bold text-xs uppercase font-montserrat hover:bg-emerald-400 transition">
+                <a href="https://wa.me/923497400818" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-emerald-500 text-black font-bold text-xs uppercase font-montserrat hover:bg-emerald-400 transition">
                     CHAT ON WHATSAPP <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>

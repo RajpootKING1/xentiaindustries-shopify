@@ -102,7 +102,7 @@
             <i class="fa-solid fa-file-signature"></i> B2B QUOTE INQUIRY
         </a>
         <div class="text-[11px] text-xsilver-dark text-center">
-            <i class="fa-solid fa-phone text-xgold mr-1"></i> +92 345 9656454
+            <i class="fa-solid fa-phone text-xgold mr-1"></i> +92 349 7400818
         </div>
     </div>
 </aside>
@@ -114,8 +114,8 @@
     <!-- Top Contact Bar -->
     <div class="hidden md:flex justify-between items-center widescreen-container py-2 border-b border-white/5 text-xs text-xsilver">
         <div class="flex items-center space-x-6">
-            <a href="tel:+923459656454" class="hover:text-xgold transition flex items-center gap-2">
-                <i class="fa-solid fa-phone text-xgold"></i> +92 345 9656454
+            <a href="tel:+923497400818" class="hover:text-xgold transition flex items-center gap-2">
+                <i class="fa-solid fa-phone text-xgold"></i> +92 349 7400818
             </a>
             <a href="mailto:info@xentiaindustries.com" class="hover:text-xgold transition flex items-center gap-2">
                 <i class="fa-solid fa-envelope text-xgold"></i> info@xentiaindustries.com
