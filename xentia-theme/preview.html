@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xentia Industries - Metallic Luxury Theme (Fortune 500 Edition)</title>
+    
+    <!-- Favicon Assets -->
+    <link rel="icon" type="image/svg+xml" href="./Assets/favicon/favicon.svg">
+    <link rel="shortcut icon" href="./Assets/favicon/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0A0A0C',
+            titanium: '#111115',
+            xgold: {
+              DEFAULT: '#D4AF37',
+              light: '#F3E5AB',
+              dark: '#AA771C'
+            },
+            xsilver: {
+              DEFAULT: '#9CA3AF',
+              light: '#E5E7EB',
+              dark: '#4B5563'
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+    </script>
+
+    <!-- Main Theme Stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body class="bg-obsidian text-xsilver-light overflow-x-hidden">
+
+<!-- FORTUNE 500 PRELOADER -->
+<div id="xentia-preloader">
+    <div class="luxury-preloader-content">
+        <div class="gold-crest-emblem relative mx-auto mb-6">
+            <div class="crest-ring-pulse"></div>
+            <div class="crest-center-logo">
+                <img src="./Assets/logo-for-website.webp" alt="Xentia Industries Crest" class="h-12 w-auto mx-auto object-contain">
+            </div>
+        </div>
+
+        <div class="font-cinzel text-xs tracking-[0.4em] gold-gradient-text uppercase font-bold mb-2">
+            XENTIA INDUSTRIES • SIALKOT, PAKISTAN
+        </div>
+        <p class="text-[10px] text-xsilver-dark font-montserrat uppercase tracking-[0.2em] mb-4">
+            German Stainless Steel Surgical Precision
+        </p>
+
+        <div class="preloader-progress-text">
+            <span id="preloader-percent">0</span>% INITIALIZING
+        </div>
+
+        <div class="preloader-bar-bg">
+            <div class="preloader-bar-fill" id="preloader-bar"></div>
+        </div>
+    </div>
+</div>
+
+<!-- VIP MODAL -->
+<div id="wholesaler-vip-modal" class="fixed inset-0 z-[99990] hidden items-center justify-center bg-black/85 backdrop-blur-md p-4">
+    <div class="relative w-full max-w-lg glass-card border-xgold/40 p-8 rounded-xl shadow-2xl text-center">
+        <button id="close-vip-modal" class="absolute top-4 right-4 text-xsilver hover:text-xgold transition">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-xgold/10 border border-xgold/30 flex items-center justify-center text-xgold text-2xl">
+            <i class="fa-solid fa-crown"></i>
+        </div>
+
+        <span class="badge-pill-gold mb-2">B2B EXCLUSIVE PORTAL</span>
+        <h3 class="font-cinzel text-2xl font-bold text-xgold-light mt-2 mb-2">JOIN XENTIA GLOBAL WHOLESALE</h3>
+        <p class="text-xs text-xsilver mb-6">
+            Get instant access to full factory-direct bulk pricing catalogs, custom laser logo branding samples, & OEM engineering support.
+        </p>
+
+        <form id="vip-modal-form" class="space-y-4">
+            <input type="text" placeholder="Clinic / Company Name" required class="w-full bg-black/50 border border-xgold/20 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-xgold">
+            <input type="email" placeholder="Professional Email Address" required class="w-full bg-black/50 border border-xgold/20 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-xgold">
+            <button type="submit" class="w-full btn-gold-glow py-3 text-xs tracking-wider">
+                UNLOCK WHOLESALE CATALOG & 15% OFF <i class="fa-solid fa-arrow-right ml-2"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- MOBILE SLIDE-OUT DRAWER -->
+<div id="mobile-drawer-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[99994] hidden"></div>
+<aside id="mobile-drawer" class="p-6 flex flex-col justify-between overflow-y-auto">
+    <div>
+        <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+            <img src="./Assets/logo-for-website.webp" alt="Xentia Logo" class="h-8 w-auto">
+            <button id="close-mobile-drawer" class="text-xsilver text-xl hover:text-xgold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <nav class="space-y-4 text-sm font-montserrat font-bold uppercase tracking-wider text-xsilver">
+            <a href="#" class="block py-2 text-xgold border-b border-white/5">HOME</a>
+            <a href="#about" class="block py-2 hover:text-xgold border-b border-white/5">ABOUT US</a>
+            <a href="#products" class="block py-2 hover:text-xgold border-b border-white/5">PRODUCTS</a>
+            <a href="#oem" class="block py-2 text-xgold border-b border-white/5">OEM / B2B PORTAL</a>
+            <a href="#contact" class="block py-2 hover:text-xgold">CONTACT US</a>
+        </nav>
+    </div>
+
+    <div class="pt-6 border-t border-white/10 space-y-3">
+        <a href="#oem" class="w-full btn-gold-glow py-3 text-xs">
+            <i class="fa-solid fa-file-signature"></i> B2B QUOTE INQUIRY
+        </a>
+        <div class="text-[11px] text-xsilver-dark text-center">
+            <i class="fa-solid fa-phone text-xgold mr-1"></i> +92 345 9656454
+        </div>
+    </div>
+</aside>
+
+<!-- METALLIC HEADER -->
+<header class="relative z-40 w-full border-b border-xgold/15 bg-obsidian/95 backdrop-blur-md">
+    <div class="hidden md:flex justify-between items-center widescreen-container py-2 border-b border-white/5 text-xs text-xsilver">
+        <div class="flex items-center space-x-6">
+            <a href="tel:+923459656454" class="hover:text-xgold transition flex items-center gap-2">
+                <i class="fa-solid fa-phone text-xgold"></i> +92 345 9656454
+            </a>
+            <a href="mailto:info@xentiaindustries.com" class="hover:text-xgold transition flex items-center gap-2">
+                <i class="fa-solid fa-envelope text-xgold"></i> info@xentiaindustries.com
+            </a>
+            <span class="text-white/20">|</span>
+            <span class="flex items-center gap-2 text-xsilver-dark">
+                <i class="fa-solid fa-location-dot text-xgold"></i> Sialkot, Pakistan (Global Export Hub)
+            </span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span class="text-xgold-light font-semibold">Worldwide Delivery: DHL / FedEx</span>
+            <div class="flex items-center gap-2 border border-xgold/20 px-2 py-0.5 rounded text-[11px] bg-titanium">
+                <span class="text-xgold">USD ($)</span>
+                <i class="fa-solid fa-chevron-down text-[9px] text-xsilver"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="widescreen-container py-4 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-3 group">
+            <img src="./Assets/logo-for-website.webp" alt="Xentia Industries Logo" class="h-10 md:h-14 w-auto object-contain transition-transform group-hover:scale-105 duration-300">
+        </a>
+
+        <nav class="hidden lg:flex items-center space-x-8 text-xs font-montserrat font-semibold tracking-wider text-xsilver-light uppercase">
+            <a href="#" class="text-xgold py-2 border-b-2 border-xgold">HOME</a>
+            <a href="#about" class="hover:text-xgold transition py-2">ABOUT US</a>
+            <a href="#products" class="hover:text-xgold transition py-2">PRODUCTS</a>
+            <a href="#oem" class="hover:text-xgold transition py-2 text-xgold flex items-center gap-1">
+                <i class="fa-solid fa-industry text-[11px]"></i> OEM / ODM
+            </a>
+            <a href="#contact" class="hover:text-xgold transition py-2">CONTACT US</a>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+            <a href="#products" class="w-10 h-10 rounded-full bg-white/5 border border-xgold/20 flex items-center justify-center text-xsilver hover:text-xgold hover:border-xgold transition">
+                <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            </a>
+
+            <a href="#oem" class="hidden sm:inline-flex btn-gold-glow py-2.5 px-4 text-xs font-montserrat tracking-wider">
+                <i class="fa-solid fa-file-signature"></i> B2B QUOTE
+            </a>
+
+            <a href="#" id="open-cart-btn" class="relative w-10 h-10 rounded-full bg-white/5 border border-xgold/20 flex items-center justify-center text-xsilver hover:text-xgold hover:border-xgold transition">
+                <i class="fa-solid fa-bag-shopping text-sm"></i>
+                <span class="cart-badge-count">2</span>
+            </a>
+
+            <button id="mobile-menu-toggle" class="lg:hidden w-10 h-10 rounded-full bg-white/5 border border-xgold/20 flex items-center justify-center text-xgold text-lg">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO SECTION (CLEAN CENTERED LAYOUT WITHOUT RIGHT IMAGE BOX) -->
+<section class="hero-wrapper relative min-h-[90vh] flex items-center justify-center py-20 overflow-hidden bg-obsidian">
+    <div class="hero-video-container">
+        <iframe id="hero-yt-player" 
+                src="https://www.youtube.com/embed/Lu-k3_RsUY4?autoplay=1&mute=1&loop=1&playlist=Lu-k3_RsUY4&controls=0&playsinline=1&showinfo=0&rel=0&enablejsapi=1" 
+                title="Xentia Industries Video" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="hero-mesh-overlay"></div>
+
+    <div class="hero-content-inner widescreen-container relative z-10 text-center max-w-4xl mx-auto space-y-8">
+        <div class="inline-flex">
+            <div class="badge-pill-gold">
+                <i class="fa-solid fa-shield-halved text-xgold text-xs"></i>
+                <span>GERMAN STAINLESS STEEL • TRUSTED WORLDWIDE</span>
+            </div>
+        </div>
+
+        <div class="space-y-2">
+            <h1 class="font-cinzel text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none uppercase">
+                <span class="gold-gradient-text block mb-2">PREMIUM</span>
+                <span class="text-white block mb-2">PLASTIC SURGERY</span>
+                <span class="text-xs sm:text-base font-montserrat font-bold text-xgold tracking-[0.4em] block flex items-center justify-center gap-4 pt-2">
+                    <span class="h-[1px] w-16 bg-xgold/50 inline-block"></span>
+                    INSTRUMENTS
+                    <span class="h-[1px] w-16 bg-xgold/50 inline-block"></span>
+                </span>
+            </h1>
+        </div>
+
+        <div class="text-sm sm:text-xl text-xsilver font-inter font-light h-8 flex items-center justify-center">
+            <span class="typewriter-text font-montserrat text-xgold-light" id="typewriter-element">Precision Crafted. Perfectly Balanced. Designed for Surgeons.</span>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-5 pt-2">
+            <a href="#products" class="btn-gold-glow px-8 py-3.5 text-xs">
+                <i class="fa-solid fa-book-open"></i> VIEW CATALOG <i class="fa-solid fa-arrow-right ml-1"></i>
+            </a>
+            <a href="#contact" class="btn-chrome-ghost px-8 py-3.5 text-xs">
+                CONTACT US <i class="fa-solid fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 text-xs border-t border-white/10 max-w-3xl mx-auto">
+            <div class="flex items-center justify-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-xgold/40 bg-xgold/10 flex items-center justify-center text-xgold shrink-0 shadow-lg">
+                    <i class="fa-solid fa-shield-halved text-base"></i>
+                </div>
+                <div class="text-left">
+                    <strong class="block text-white font-montserrat text-[11px] uppercase">GERMAN STEEL</strong>
+                    <span class="text-[10px] text-xsilver-dark">Premium Grade</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-xgold/40 bg-xgold/10 flex items-center justify-center text-xgold shrink-0 shadow-lg">
+                    <i class="fa-solid fa-crosshair text-base"></i>
+                </div>
+                <div class="text-left">
+                    <strong class="block text-white font-montserrat text-[11px] uppercase">PRECISION CRAFT</strong>
+                    <span class="text-[10px] text-xsilver-dark">Superior Results</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-xgold/40 bg-xgold/10 flex items-center justify-center text-xgold shrink-0 shadow-lg">
+                    <i class="fa-solid fa-temperature-arrow-up text-base"></i>
+                </div>
+                <div class="text-left">
+                    <strong class="block text-white font-montserrat text-[11px] uppercase">AUTOCLAVABLE</strong>
+                    <span class="text-[10px] text-xsilver-dark">Rust Proof</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-xgold/40 bg-xgold/10 flex items-center justify-center text-xgold shrink-0 shadow-lg">
+                    <i class="fa-solid fa-globe text-base"></i>
+                </div>
+                <div class="text-left">
+                    <strong class="block text-white font-montserrat text-[11px] uppercase">TRUSTED PROS</strong>
+                    <span class="text-[10px] text-xsilver-dark">70+ Countries</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS SHOWCASE (.WEBP IMAGES) -->
+<section id="products" class="py-20 bg-titanium border-y border-white/5">
+    <div class="widescreen-container">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+                <span class="badge-pill-gold mb-3">FLAGSHIP CATALOG</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-white uppercase mt-2">
+                    FEATURED <span class="gold-gradient-text">INSTRUMENTS</span>
+                </h2>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Sample Card 1 -->
+            <div class="product-grid-card group flex flex-col justify-between">
+                <div>
+                    <div class="product-thumb-wrapper mb-4">
+                        <img src="./Assets/product-images/aufricht_rhinoplasty_retractor.webp" alt="Aufricht Retractor" class="object-cover opacity-90">
+                        <span class="absolute top-3 left-3 badge-stock-in">GERMAN STEEL</span>
+                        <span class="absolute top-3 right-3 badge-hrc-spec">HRC 54</span>
+                    </div>
+                    <span class="text-[10px] text-xsilver-dark font-montserrat uppercase tracking-wider block mb-1">SKU: XNT-PS-8801</span>
+                    <h4 class="font-cinzel text-base font-bold text-white group-hover:text-xgold transition line-clamp-2 mb-2">
+                        Aufricht Rhinoplasty Fiber Optic Gold Retractor 19cm
+                    </h4>
+                    <div class="text-sm font-bold text-xgold mb-4">
+                        $145.00 USD
+                        <span class="text-[10px] text-xsilver font-normal block">Single Sample Retail Price</span>
+                    </div>
+                </div>
+                <div class="space-y-2 pt-2 border-t border-white/5">
+                    <button class="w-full btn-gold-glow py-2 text-xs">BUY 1 SAMPLE ($145.00)</button>
+                    <a href="#oem" class="w-full btn-chrome-ghost py-2 text-[11px]">B2B BULK QUOTE (-50%)</a>
+                </div>
+            </div>
+
+            <!-- Sample Card 2 -->
+            <div class="product-grid-card group flex flex-col justify-between">
+                <div>
+                    <div class="product-thumb-wrapper mb-4">
+                        <img src="./Assets/product-images/japanese_hairdressing_shear.webp" alt="Japanese Styling Shear" class="object-cover opacity-90">
+                        <span class="absolute top-3 left-3 badge-stock-in">440C JAPANESE</span>
+                        <span class="absolute top-3 right-3 badge-hrc-spec">HRC 60</span>
+                    </div>
+                    <span class="text-[10px] text-xsilver-dark font-montserrat uppercase tracking-wider block mb-1">SKU: XNT-HS-3301</span>
+                    <h4 class="font-cinzel text-base font-bold text-white group-hover:text-xgold transition line-clamp-2 mb-2">
+                        Japanese 440C Convex Edge Hairdressing Shear 6.0"
+                    </h4>
+                    <div class="text-sm font-bold text-xgold mb-4">
+                        $120.00 USD
+                        <span class="text-[10px] text-xsilver font-normal block">Single Sample Retail Price</span>
+                    </div>
+                </div>
+                <div class="space-y-2 pt-2 border-t border-white/5">
+                    <button class="w-full btn-gold-glow py-2 text-xs">BUY 1 SAMPLE ($120.00)</button>
+                    <a href="#oem" class="w-full btn-chrome-ghost py-2 text-[11px]">B2B BULK QUOTE (-50%)</a>
+                </div>
+            </div>
+
+            <!-- Sample Card 3 -->
+            <div class="product-grid-card group flex flex-col justify-between">
+                <div>
+                    <div class="product-thumb-wrapper mb-4">
+                        <img src="./Assets/product-images/mayo_hegar_tc_needle_holder.webp" alt="TC Needle Holder" class="object-cover opacity-90">
+                        <span class="absolute top-3 left-3 badge-stock-in">TC GOLD RING</span>
+                        <span class="absolute top-3 right-3 badge-hrc-spec">HRC 68</span>
+                    </div>
+                    <span class="text-[10px] text-xsilver-dark font-montserrat uppercase tracking-wider block mb-1">SKU: XNT-TC-5501</span>
+                    <h4 class="font-cinzel text-base font-bold text-white group-hover:text-xgold transition line-clamp-2 mb-2">
+                        Mayo-Hegar Tungsten Carbide Gold Handle Needle Holder 7"
+                    </h4>
+                    <div class="text-sm font-bold text-xgold mb-4">
+                        $95.00 USD
+                        <span class="text-[10px] text-xsilver font-normal block">Single Sample Retail Price</span>
+                    </div>
+                </div>
+                <div class="space-y-2 pt-2 border-t border-white/5">
+                    <button class="w-full btn-gold-glow py-2 text-xs">BUY 1 SAMPLE ($95.00)</button>
+                    <a href="#oem" class="w-full btn-chrome-ghost py-2 text-[11px]">B2B BULK QUOTE (-50%)</a>
+                </div>
+            </div>
+
+            <!-- Sample Card 4 -->
+            <div class="product-grid-card group flex flex-col justify-between">
+                <div>
+                    <div class="product-thumb-wrapper mb-4">
+                        <img src="./Assets/product-images/tebbetts_caliper_gauge.webp" alt="Tebbetts Caliper" class="object-cover opacity-90">
+                        <span class="absolute top-3 left-3 badge-stock-in">GERMAN STEEL</span>
+                        <span class="absolute top-3 right-3 badge-hrc-spec">HRC 56</span>
+                    </div>
+                    <span class="text-[10px] text-xsilver-dark font-montserrat uppercase tracking-wider block mb-1">SKU: XNT-PS-8802</span>
+                    <h4 class="font-cinzel text-base font-bold text-white group-hover:text-xgold transition line-clamp-2 mb-2">
+                        Tebbetts Precision Caliper & Measuring Gauge 0-80mm
+                    </h4>
+                    <div class="text-sm font-bold text-xgold mb-4">
+                        $185.00 USD
+                        <span class="text-[10px] text-xsilver font-normal block">Single Sample Retail Price</span>
+                    </div>
+                </div>
+                <div class="space-y-2 pt-2 border-t border-white/5">
+                    <button class="w-full btn-gold-glow py-2 text-xs">BUY 1 SAMPLE ($185.00)</button>
+                    <a href="#oem" class="w-full btn-chrome-ghost py-2 text-[11px]">B2B BULK QUOTE (-50%)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT US SECTION (FULL INTERACTIVE FORM & DETAILS) -->
+<section id="contact" class="py-20 bg-obsidian border-b border-white/5">
+    <div class="widescreen-container grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-7 glass-card p-8 rounded-2xl border-xgold/30 relative">
+            <h3 class="font-cinzel text-2xl font-bold text-white uppercase mb-2">SEND AN INQUIRY</h3>
+            <p class="text-xs text-xsilver mb-6">Fill out the form below for instant factory-direct sample quotes and technical specifications.</p>
+
+            <form id="preview-contact-form" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] font-montserrat uppercase font-semibold text-xgold mb-1">Full Name *</label>
+                        <input type="text" placeholder="Dr. Alexander Wright" required class="w-full bg-black/60 border border-xgold/20 rounded-md px-4 py-3 text-xs text-white focus:outline-none focus:border-xgold transition">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-montserrat uppercase font-semibold text-xgold mb-1">Professional Email *</label>
+                        <input type="email" placeholder="alexander@clinic.com" required class="w-full bg-black/60 border border-xgold/20 rounded-md px-4 py-3 text-xs text-white focus:outline-none focus:border-xgold transition">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] font-montserrat uppercase font-semibold text-xgold mb-1">Phone / WhatsApp *</label>
+                        <input type="text" placeholder="+1 (555) 019-2834" required class="w-full bg-black/60 border border-xgold/20 rounded-md px-4 py-3 text-xs text-white focus:outline-none focus:border-xgold transition">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-montserrat uppercase font-semibold text-xgold mb-1">Category Interest</label>
+                        <select class="w-full bg-black/60 border border-xgold/20 rounded-md px-4 py-3 text-xs text-white focus:outline-none focus:border-xgold transition">
+                            <option>Plastic Surgery & Rhinoplasty</option>
+                            <option>Japanese Styling Shears</option>
+                            <option>Tungsten Carbide Instruments</option>
+                            <option>Custom OEM Manufacturing</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-montserrat uppercase font-semibold text-xgold mb-1">Message & Technical Specs</label>
+                    <textarea rows="4" placeholder="Specify instrument SKU codes, custom laser logo branding requirements, or delivery deadline..." required class="w-full bg-black/60 border border-xgold/20 rounded-md px-4 py-3 text-xs text-white focus:outline-none focus:border-xgold transition"></textarea>
+                </div>
+
+                <button type="submit" class="w-full btn-gold-glow py-3.5 text-xs font-montserrat uppercase tracking-wider font-bold">
+                    SUBMIT INQUIRY TO FACTORY <i class="fa-solid fa-paper-plane ml-2"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+            <div class="glass-card p-6 rounded-xl border-xgold/20 space-y-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-full bg-xgold/10 border border-xgold/30 flex items-center justify-center text-xgold text-lg shrink-0">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <div>
+                        <strong class="block text-white font-montserrat text-xs uppercase">Factory & Head Office</strong>
+                        <p class="text-xs text-xsilver mt-1 leading-relaxed">
+                            Xentia Industries<br>
+                            Small Industrial Estate, Ugoki Road<br>
+                            Sialkot 51310, Punjab, Pakistan
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 rounded-full bg-xgold/10 border border-xgold/30 flex items-center justify-center text-xgold text-lg shrink-0">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <strong class="block text-white font-montserrat text-xs uppercase">Phone & WhatsApp</strong>
+                        <p class="text-xs text-xsilver mt-1">
+                            <a href="tel:+923459656454" class="hover:text-xgold transition">+92 345 9656454</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 pt-4 border-t border-white/5">
+                    <div class="w-10 h-10 rounded-full bg-xgold/10 border border-xgold/30 flex items-center justify-center text-xgold text-lg shrink-0">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <strong class="block text-white font-montserrat text-xs uppercase">Email Inquiry</strong>
+                        <p class="text-xs text-xsilver mt-1">
+                            <a href="mailto:info@xentiaindustries.com" class="hover:text-xgold transition">info@xentiaindustries.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-titanium border-t border-xgold/20 text-xsilver py-12">
+    <div class="widescreen-container text-center space-y-4">
+        <img src="./Assets/logo-for-website.webp" alt="Xentia Industries Logo" class="h-12 w-auto mx-auto">
+        <p class="text-xs text-xsilver-dark max-w-2xl mx-auto">
+            Xentia Industries (Sialkot, Pakistan) - Premium Manufacturer & Exporter of Surgical Tools, Plastic Surgery Instruments, & Hairdressing Scissors.
+        </p>
+        <p class="text-xs text-xsilver">© 2026 Xentia Industries. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- MOBILE APP BAR -->
+<div class="mobile-bottom-app-bar">
+    <a href="#" class="mobile-nav-item active">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+    </a>
+    <a href="#products" class="mobile-nav-item">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>Catalog</span>
+    </a>
+    <a href="#oem" class="mobile-nav-item text-xgold">
+        <i class="fa-solid fa-file-signature"></i>
+        <span>B2B Quote</span>
+    </a>
+    <a href="#" class="mobile-nav-item relative">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span>Cart</span>
+        <span class="cart-badge-count">2</span>
+    </a>
+</div>
+
+<!-- CURSOR DOM -->
+<div class="xentia-cursor-dot" id="cursor-dot"></div>
+<div class="xentia-cursor-ring" id="cursor-ring"></div>
+
+<!-- MAIN SCRIPT -->
+<script src="./Assets/js/main.js"></script>
+</body>
+</html>

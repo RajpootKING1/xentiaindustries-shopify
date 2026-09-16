@@ -1,0 +1,25 @@
+name: Shopify Theme Automated Deployment
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'shopify-theme/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy Theme to Shopify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy Theme to Shopify
+        uses: Shopify/theme-action@v1
+        with:
+          path: 'shopify-theme'
+          store: ${{ secrets.SHOPIFY_STORE_URL }}
+          password: ${{ secrets.SHOPIFY_THEME_ACCESS_TOKEN }}
+          theme_id: ${{ secrets.SHOPIFY_THEME_ID }}
