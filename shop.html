@@ -234,7 +234,7 @@
         <div>
           <img src="Assets/logo-for-website.png" alt="Xentia Industries" width="160" height="68" style="height: 42px; width: auto; margin-bottom: var(--space-4);">
           <p style="font-size: var(--text-xs); color: var(--color-steel-medium); line-height: var(--leading-relaxed); margin-bottom: var(--space-4);">
-            Premier manufacturer and international exporter of high-precision surgical instruments forged from German Stainless Steel.
+            Premier manufacturer and international exporter of professional surgical, dental, orthopedic, ENT, Beauty and Plastic & Cosmtic Surgery instruments forged from German DIN 1.4021 Stainless Steel.
           </p>
           <div class="social-icons-group">
             <a href="https://facebook.com/xentiaindustries" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
@@ -322,9 +322,30 @@
     import { cartController } from './js/cart.js';
     import { mobileAppBarController } from './js/components/mobile-app-bar.js';
     import { shopifyClient } from './js/api.js';
-    import { renderProductCard, renderSkeletonProductCard } from './js/components/product-card.js';
+    import { renderProductCard, renderSkeletonProductCard, renderPlaceholderProductCard } from './js/components/product-card.js';
     import { CollectionFilterController } from './js/components/collection-filter.js';
     import { productModal } from './js/components/product-modal.js';
+
+    const CATEGORIES = [
+      { handle: 'plastic-cosmetic-surgery-instruments', name: 'Plastic & Cosmetic Surgery', sub: 'Facelift Scissors, Breast Retractors, Liposuction Cannulas, Blepharoplasty Forceps' },
+      { handle: 'rhinoplasty-ent-instruments', name: 'Rhinoplasty & ENT Instruments', sub: 'Aufricht Retractors, Cottle Speculums, Bone Rasps, Nasal Osteotomes, Septum Forceps' },
+      { handle: 'general-surgery-instruments', name: 'General & Reconstructive Surgery', sub: 'Scalpels, Mayo & Metzenbaum Scissors, TC Needle Holders, Hemostatic Clamps' },
+      { handle: 'orthopedic-instruments', name: 'Orthopedic Instruments', sub: 'Bone Holding Clamps, Liston Cutters, Hohmann Retractors, Bone Gouges, Mallets' },
+      { handle: 'spine-surgery-instruments', name: 'Spine Surgery Instruments', sub: 'Kerrison Cervical/Lumbar Rongeurs, Caspar Distractors, Lamina Spreaders' },
+      { handle: 'neurosurgical-instruments', name: 'Neurosurgical Instruments', sub: 'Micro Scissors, Brain Spatulas, Bayonet Forceps, Skull Punches, Micro Dissectors' },
+      { handle: 'maxillofacial-oral-surgery-instruments', name: 'Maxillofacial & Oral Surgery', sub: 'Dingman Mouth Gags, Bone Spreaders, Wire Cutters, Plate Bending Pliers' },
+      { handle: 'ophthalmic-instruments', name: 'Ophthalmic Instruments', sub: 'Eye Speculums, Micro Capsulorhexis Forceps, Corneal Scissors, Needle Micro Holders' },
+      { handle: 'dental-instruments', name: 'Dental & Oral Maxillofacial', sub: 'Extraction Forceps, Root Elevators, Scalers, Periodontal Probes, Amalgam Pluggers' },
+      { handle: 'hair-restoration-instruments', name: 'Hair Restoration & FUE', sub: 'Motorized & Manual FUE Punches, Micro Grafting Forceps, Implanter Pens' },
+      { handle: 'arthroscopy-instruments', name: 'Arthroscopy & Sports Medicine', sub: 'Arthroscopic Punches, Graspers, Hook Probes, Meniscectomy Scissors, Shaver Blades' },
+      { handle: 'gynecology-obstetrics-instruments', name: 'Gynecology & Obstetrics', sub: 'Graves Speculums, Uterine Dilators, Biopsy Punches, Hysterectomy Clamps' },
+      { handle: 'urology-instruments', name: 'Urology Instruments', sub: 'Resectoscope Sheaths, Urethral Sounds, Catheter Guides, Stone Retrieval Forceps' },
+      { handle: 'veterinary-instruments', name: 'Veterinary Surgical Instruments', sub: 'Veterinary Forceps, Bone Reduction Clamps, Spay Packs, Orthopedic Pins' },
+      { handle: 'laparoscopic-instruments', name: 'Laparoscopic Instruments', sub: '5mm/10mm Trocar Sets, Bipolar Laparoscopic Graspers, Endo-Scissors, Clip Appliers' },
+      { handle: 'cardiovascular-thoracic-instruments', name: 'Cardiovascular & Thoracic', sub: 'Sternal Retractors, Vascular DeBakey Clamps, Potts Scissors, Valve Hooks' },
+      { handle: 'dermatology-instruments', name: 'Dermatology Instruments', sub: 'Dermal Curettes, Biopsy Punches, Comedone Extractors, Cryo-Probes' },
+      { handle: 'electrosurgical-surgical-accessories', name: 'Electrosurgical & Accessories', sub: 'Non-Stick Bipolar Forceps, Monopolar Electrodes, DIN Sterilization Wire Trays' }
+    ];
 
     const AppState = {
       allProducts: [],
@@ -333,6 +354,8 @@
       currentSort: 'best-selling',
       availability: 'all'
     };
+
+    let filterControllerInstance = null;
 
     document.addEventListener('DOMContentLoaded', async () => {
       headerController.init();
@@ -357,17 +380,24 @@
       });
 
       // Filter Controller
-      const filterController = new CollectionFilterController({
+      filterControllerInstance = new CollectionFilterController({
         containerId: 'catalog-filter-container',
         onFilterChange: handleFilterChange
       });
-      await filterController.init();
+      await filterControllerInstance.init();
 
-      // Check URL hash for direct category filter (e.g. #plastic-surgery)
+      // Check URL hash for direct category filter
       const hash = window.location.hash.replace('#', '');
       if (hash && hash !== 'catalog-section') {
-        filterController.setCollection(hash);
+        filterControllerInstance.setCollection(hash);
       }
+
+      window.filterToCategory = (handle) => {
+        if (filterControllerInstance) {
+          filterControllerInstance.setCollection(handle);
+          window.scrollTo({ top: document.getElementById('catalog-section').offsetTop - 80, behavior: 'smooth' });
+        }
+      };
 
       await loadProducts();
     });
@@ -399,10 +429,73 @@
       const grid = document.getElementById('live-products-grid');
       if (!grid) return;
 
+      // MODE 1: MASTER CATEGORY SHOWCASE (When All Instruments are selected and no search query)
+      if (AppState.activeCollection === 'all' && !AppState.searchQuery) {
+        let showcaseHTML = `
+          <div class="categories-showcase-flow" style="grid-column: 1 / -1; width: 100%;">
+        `;
+
+        CATEGORIES.forEach(cat => {
+          // Find products matching this category
+          let matching = AppState.allProducts.filter(p => {
+            const handleMatch = p.collections && p.collections.some(c => c.handle === cat.handle || c.handle.includes(cat.handle.split('-')[0]));
+            const typeMatch = p.productType && (p.productType.toLowerCase().includes(cat.name.toLowerCase().split(' ')[0]));
+            return handleMatch || typeMatch;
+          });
+
+          if (AppState.availability === 'in-stock') {
+            matching = matching.filter(p => Boolean(p.availableForSale));
+          } else if (AppState.availability === 'custom') {
+            matching = matching.filter(p => !p.availableForSale);
+          }
+
+          const liveCount = matching.length;
+          const renderedLive = matching.slice(0, 5);
+          const neededPlaceholders = 5 - renderedLive.length;
+
+          showcaseHTML += `
+            <section class="category-section-block" style="margin-bottom: var(--space-10);">
+              <div class="category-header-bar">
+                <div class="category-header-info">
+                  <div class="category-meta-badge">
+                    <span class="category-badge-dot"></span>
+                    <span class="category-badge-text">CLINICAL DISCIPLINE</span>
+                    ${liveCount > 0 ? `<span class="category-badge-count">${liveCount} In-Stock Products</span>` : '<span class="category-badge-count pending">OEM Production on Demand</span>'}
+                  </div>
+                  <h2 class="category-title">${cat.name}</h2>
+                  <p class="category-subtext">${cat.sub}</p>
+                </div>
+                <div class="category-header-actions">
+                  <button type="button" class="btn btn-secondary btn-view-more" onclick="window.filterToCategory('${cat.handle}')" aria-label="View all ${cat.name} instruments">
+                    <span>VIEW MORE</span>
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="category-products-row-container">
+                <div class="category-products-row">
+                  ${renderedLive.map(p => renderProductCard(p)).join('')}
+                  ${Array.from({ length: neededPlaceholders }).map((_, i) => renderPlaceholderProductCard(cat.name, cat.handle, i + 1)).join('')}
+                </div>
+              </div>
+            </section>
+          `;
+        });
+
+        showcaseHTML += `</div>`;
+        grid.innerHTML = showcaseHTML;
+        wireProductCardEvents(grid);
+        return;
+      }
+
+      // MODE 2: SPECIFIC CATEGORY OR SEARCH RESULTS GRID
       let list = [...AppState.allProducts];
 
       if (AppState.activeCollection !== 'all') {
-        list = list.filter(p => p.collections.some(c => c.handle === AppState.activeCollection));
+        list = list.filter(p => p.collections && p.collections.some(c => c.handle === AppState.activeCollection));
       }
 
       if (AppState.availability === 'in-stock') {
@@ -428,21 +521,55 @@
       }
 
       if (list.length === 0) {
+        const activeCatObj = CATEGORIES.find(c => c.handle === AppState.activeCollection);
+        const catTitle = activeCatObj ? activeCatObj.name : 'Selected Discipline';
+
         grid.innerHTML = `
-          <div class="card card-metallic text-center" style="grid-column: 1 / -1; padding: var(--space-12);">
-            <p style="color: var(--color-gold-base); font-weight: var(--weight-bold); margin-bottom: 8px;">No Instruments Matching Criteria</p>
-            <p style="font-size: var(--text-xs); color: var(--color-steel-muted); margin-bottom: 16px;">We manufacture custom surgical instruments to your exact metallurgical drawing or sample.</p>
-            <a href="wholesale-custom-orders.html" class="btn btn-primary btn-sm">Request Custom Production RFQ</a>
+          <div class="empty-category-showcase" style="grid-column: 1 / -1; width: 100%;">
+            <div class="catalog-empty text-center" style="padding: var(--space-8) var(--space-4); margin-bottom: var(--space-8); background: rgba(255,255,255,0.02); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: var(--radius-md);">
+              <span class="badge-pill" style="margin-bottom: var(--space-2);">CUSTOM PRODUCTION READY</span>
+              <p style="color: var(--color-steel-white); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2);">
+                Active catalog listings for ${catTitle} are currently being published from the Sialkot factory floor.
+              </p>
+              <p style="color: var(--color-steel-medium); font-size: var(--text-sm); max-width: 620px; margin: 0 auto var(--space-4) auto;">
+                We forge complete custom sets and precision OEM instruments to your exact dimensional blueprints and DIN 1.4021 metallurgical specifications.
+              </p>
+              <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+                <a href="wholesale-custom-orders.html?specialty=${AppState.activeCollection}" class="btn btn-primary btn-sm">
+                  REQUEST CUSTOM OEM PRODUCTION RUN
+                </a>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="window.filterToCategory('all')">
+                  &larr; BACK TO ALL CATEGORIES
+                </button>
+              </div>
+            </div>
+
+            <div class="category-products-row-container">
+              <div class="category-products-row">
+                ${Array.from({ length: 5 }).map((_, i) => renderPlaceholderProductCard(catTitle, AppState.activeCollection, i + 1)).join('')}
+              </div>
+            </div>
           </div>
         `;
         return;
       }
 
-      grid.innerHTML = list.map(p => renderProductCard(p)).join('');
+      grid.innerHTML = `
+        <div style="grid-column: 1 / -1; margin-bottom: var(--space-4); display: flex; justify-content: space-between; align-items: center;">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="window.filterToCategory('all')">
+            &larr; BACK TO ALL CATEGORIES
+          </button>
+          <span style="font-size: var(--text-xs); color: var(--color-steel-muted);">${list.length} Instruments Found</span>
+        </div>
+        ${list.map(p => renderProductCard(p)).join('')}
+      `;
+      wireProductCardEvents(grid);
+    }
 
-      // Wire up buttons
-      grid.querySelectorAll('.product-card').forEach(card => {
+    function wireProductCardEvents(container) {
+      container.querySelectorAll('.product-card').forEach(card => {
         const handle = card.getAttribute('data-handle');
+        if (!handle) return;
         const prod = AppState.allProducts.find(p => p.handle === handle);
         if (!prod) return;
 
