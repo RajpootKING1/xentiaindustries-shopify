@@ -206,6 +206,19 @@
       }, { once: true });
     })();
   </script>
+
+  <!-- Surgical Sets Hash Redirect -->
+  <script>
+    (function() {
+      function checkSurgicalSetsHash() {
+        if (window.location.hash === '#surgical-sets') {
+          window.location.replace("surgical-sets.html");
+        }
+      }
+      checkSurgicalSetsHash();
+      window.addEventListener('hashchange', checkSurgicalSetsHash);
+    })();
+  </script>
 </head>
 <body>
 
@@ -1898,55 +1911,29 @@
         <!-- Policies Feature Cards Grid (6 Policies) -->
         <div class="policies-grid">
           
-          <!-- Policy 1: Return & Replacement Warranty -->
+          <!-- Policy 1: Refund, Return & Cancellation Policy -->
           <article class="policy-feature-card">
             <div>
               <div class="policy-card-top">
                 <div class="policy-card-icon" aria-hidden="true">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
-                <span class="policy-card-badge">3-YEAR GUARANTEE</span>
+                <span class="policy-card-badge">UNIFIED GUARANTEE</span>
               </div>
-              <h3 class="policy-card-title">Return &amp; Replacement Warranty</h3>
+              <h3 class="policy-card-title">Refund, Return &amp; Cancellation Policy</h3>
               <p class="policy-card-desc">
-                Guaranteed against defects in forging, heat treatment, and alignment for 3 full years. Free replacement for any instrument showing corrosion or micro-fracture under 134&deg;C steam autoclave.
+                Guaranteed against forging, alignment, and autoclave defects for 3 full years. Institutional sample evaluation with 100% refund guarantee, and fast-track cancellation protocol prior to custom forging.
               </p>
             </div>
             <div>
               <div class="policy-pill-group">
-                <span class="policy-pill">German DIN 1.4021</span>
-                <span class="policy-pill">134&deg;C Autoclave Safe</span>
-                <span class="policy-pill">30-Day Clinical Trial</span>
-              </div>
-              <a href="policies.html#returns" class="policy-card-link">
-                <span>Read Warranty Terms</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- Policy 2: Refund Policy -->
-          <article class="policy-feature-card">
-            <div>
-              <div class="policy-card-top">
-                <div class="policy-card-icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                </div>
-                <span class="policy-card-badge">SAMPLE PROTECTION</span>
-              </div>
-              <h3 class="policy-card-title">Refund &amp; Sample Evaluation</h3>
-              <p class="policy-card-desc">
-                Institutional buyers evaluate sample batches risk-free. If clinical performance does not match agreed specifications, return within 30 days for 100% refund or precision re-machining.
-              </p>
-            </div>
-            <div>
-              <div class="policy-pill-group">
+                <span class="policy-pill">3-Year Warranty</span>
                 <span class="policy-pill">100% Sample Refund</span>
                 <span class="policy-pill">RMA Fast-Track</span>
-                <span class="policy-pill">5–7 Day Credit</span>
+                <span class="policy-pill">134&deg;C Autoclave</span>
               </div>
-              <a href="policies.html#refunds" class="policy-card-link">
-                <span>Inspect Refund Rules</span>
+              <a href="policies.html#refunds-returns" class="policy-card-link">
+                <span>Inspect Unified Policy</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             </div>
@@ -2033,7 +2020,7 @@
             </div>
           </article>
 
-          <!-- Policy 6: Quality Assurance & Compliance -->
+          <!-- Policy 5: Quality Assurance & Compliance -->
           <article class="policy-feature-card">
             <div>
               <div class="policy-card-top">
@@ -2055,6 +2042,33 @@
               </div>
               <a href="policies.html#compliance" class="policy-card-link">
                 <span>Explore Quality Standards</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Policy 6: Procurement FAQ & Advisory -->
+          <article class="policy-feature-card">
+            <div>
+              <div class="policy-card-top">
+                <div class="policy-card-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <span class="policy-card-badge">B2B HELPDESK</span>
+              </div>
+              <h3 class="policy-card-title">Procurement FAQ &amp; Guidance</h3>
+              <p class="policy-card-desc">
+                Immediate answers on custom laser markings, sterile DIN cassette configurations, volume tier pricing, export documentation, and Sialkot direct factory audits.
+              </p>
+            </div>
+            <div>
+              <div class="policy-pill-group">
+                <span class="policy-pill">Factory Direct</span>
+                <span class="policy-pill">Tender Specs</span>
+                <span class="policy-pill">Fast Invoicing</span>
+              </div>
+              <a href="faq.html" class="policy-card-link">
+                <span>Consult Procurement FAQ</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             </div>
@@ -2284,8 +2298,7 @@
         <div>
           <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">INSTITUTIONAL POLICIES</h4>
           <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
-            <li><a href="policies.html#returns" style="color: var(--color-steel-silver);">Return &amp; Replacement Warranty</a></li>
-            <li><a href="policies.html#refunds" style="color: var(--color-steel-silver);">Refund Policy &amp; Evaluations</a></li>
+            <li><a href="policies.html#refunds-returns" style="color: var(--color-steel-silver);">Refund, Return &amp; Cancellation Policy</a></li>
             <li><a href="policies.html#shipping" style="color: var(--color-steel-silver);">Shipping Policy (EXW/FOB/DDP)</a></li>
             <li><a href="policies.html#terms" style="color: var(--color-steel-silver);">Terms &amp; Conditions of Supply</a></li>
             <li><a href="policies.html#privacy" style="color: var(--color-steel-silver);">Privacy &amp; GDPR Compliance</a></li>
