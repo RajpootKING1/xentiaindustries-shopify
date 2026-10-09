@@ -155,13 +155,13 @@
       <!-- Desktop Navigation -->
       <nav class="hide-mobile" aria-label="Main Navigation">
         <ul class="flex items-center gap-6" style="font-family: var(--font-display); font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); margin: 0; padding: 0; list-style: none;">
-          <li><a href="index.html" style="color: var(--color-steel-silver);">HOME</a></li>
-          <li><a href="shop.html" style="color: var(--color-steel-silver);">CATALOG</a></li>
-          <li><a href="surgical-sets.html" style="color: var(--color-steel-silver);">SURGICAL SETS</a></li>
-          <li><a href="wholesale-custom-orders.html" style="color: var(--color-steel-silver);">CUSTOM OEM</a></li>
-          <li><a href="about.html" style="color: var(--color-steel-silver);">ABOUT</a></li>
-          <li><a href="contact.html" style="color: var(--color-gold-base);">CONTACT</a></li>
-          <li><a href="account.html" style="color: var(--color-steel-silver);">ACCOUNT</a></li>
+          <li><a href="index.html" class="site-nav-link site-nav-home" style="color: var(--color-steel-silver); white-space: nowrap;">HOME</a></li>
+          <li><a href="shop.html" class="site-nav-link site-nav-products" style="color: var(--color-steel-silver); white-space: nowrap;">PRODUCTS &amp; CATEGORIES</a></li>
+          <li><a href="surgical-sets.html" class="site-nav-link site-nav-sets" style="color: var(--color-steel-silver); white-space: nowrap;">SURGICAL SETS</a></li>
+          <li><a href="wholesale-custom-orders.html" class="site-nav-link site-nav-wholesale" style="color: var(--color-steel-silver); white-space: nowrap;">WHOLESALE &amp; CUSTOM ORDERS</a></li>
+          <li><a href="about.html" class="site-nav-link site-nav-about" style="color: var(--color-steel-silver); white-space: nowrap;">ABOUT US</a></li>
+          <li><a href="contact.html" class="site-nav-link site-nav-contact is-active active" aria-current="page" style="color: var(--color-gold-base); font-weight: 700; white-space: nowrap;">CONTACT US</a></li>
+          <li><a href="faq.html" class="site-nav-link site-nav-faqs" style="color: var(--color-steel-silver); white-space: nowrap;">FAQS</a></li>
         </ul>
       </nav>
 
@@ -207,13 +207,14 @@
 
       <ul class="mobile-nav-links">
         <li><a href="index.html" class="mobile-nav-link">HOME</a></li>
-        <li><a href="shop.html" class="mobile-nav-link">CATALOG (50+ TOOLS)</a></li>
+        <li><a href="shop.html" class="mobile-nav-link">PRODUCTS &amp; CATEGORIES</a></li>
         <li><a href="surgical-sets.html" class="mobile-nav-link">SURGICAL SETS</a></li>
-        <li><a href="wholesale-custom-orders.html" class="mobile-nav-link">B2B CUSTOM RFQ</a></li>
-        <li><a href="about.html" class="mobile-nav-link">ABOUT & METALLURGY</a></li>
-        <li><a href="contact.html" class="mobile-nav-link" style="color: var(--color-gold-bright);">CONTACT FACTORY</a></li>
-        <li><a href="account.html" class="mobile-nav-link">MY ACCOUNT</a></li>
-        <li><a href="faq.html" class="mobile-nav-link">FAQ & PROCUREMENT</a></li>
+        <li><a href="wholesale-custom-orders.html" class="mobile-nav-link">WHOLESALE &amp; CUSTOM ORDERS</a></li>
+        <li><a href="about.html" class="mobile-nav-link">ABOUT US</a></li>
+        <li><a href="contact.html" class="mobile-nav-link is-active active" aria-current="page" style="color: var(--color-gold-base); font-weight: 700;">CONTACT US</a></li>
+        <li><a href="account.html" class="mobile-nav-link">CUSTOMER ACCOUNT</a></li>
+        <li><a href="faq.html" class="mobile-nav-link">FAQS</a></li>
+        <li><a href="policies.html" class="mobile-nav-link">POLICIES</a></li>
       </ul>
 
       <!-- Social Links in Drawer -->
@@ -482,24 +483,25 @@
         <div>
           <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">PAGES &amp; CATALOG</h4>
           <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
-            <li><a href="shop.html" style="color: var(--color-steel-silver);">Product Catalog (50+ Items)</a></li>
-            <li><a href="surgical-sets.html" style="color: var(--color-steel-silver);">Surgical Sets (19 Sets)</a></li>
-            <li><a href="wholesale-custom-orders.html" style="color: var(--color-steel-silver);">B2B Quotation Portal</a></li>
-            <li><a href="about.html" style="color: var(--color-steel-silver);">About Xentia Industries</a></li>
-            <li><a href="contact.html" style="color: var(--color-steel-silver);">Contact Sales Desk</a></li>
-            <li><a href="account.html" style="color: var(--color-steel-silver);">Customer Account Portal</a></li>
+            <li><a href="shop.html" style="color: var(--color-steel-silver);">Products &amp; Categories</a></li>
+            <li><a href="shop.html" style="color: var(--color-steel-silver);">Browse All Products</a></li>
+            <li><a href="surgical-sets.html" style="color: var(--color-steel-silver);">Surgical Sets</a></li>
+            <li><a href="wholesale-custom-orders.html" style="color: var(--color-steel-silver);">Wholesale &amp; Custom Orders</a></li>
+            <li><a href="about.html" style="color: var(--color-steel-silver);">About Us</a></li>
+            <li><a href="contact.html" style="color: var(--color-gold-base); font-weight: 700;">Contact Us</a></li>
+            <li><a href="account.html" style="color: var(--color-steel-silver);">Customer Account</a></li>
           </ul>
         </div>
 
         <!-- Column 3: B2B Capabilities -->
         <div>
-          <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">B2B CAPABILITIES</h4>
+          <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">B2B SOLUTIONS</h4>
           <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
-            <li><a href="wholesale-custom-orders.html" style="color: var(--color-steel-silver);">Custom OEM &amp; Private Label</a></li>
-            <li><a href="wholesale-custom-orders.html" style="color: var(--color-steel-silver);">MOPA Laser Engraving &amp; UDI</a></li>
+            <li><a href="wholesale-custom-orders.html" style="color: var(--color-steel-silver);">Wholesale &amp; Custom Orders</a></li>
+            <li><a href="wholesale-custom-orders.html" style="color: var(--color-steel-silver);">Custom OEM &amp; Private Labeling</a></li>
+            <li><a href="wholesale-custom-orders.html" style="color: var(--color-steel-silver);">MOPA Laser Logo Engraving</a></li>
             <li><a href="surgical-sets.html#tray-configurator" style="color: var(--color-steel-silver);">Modular DIN Sterilization Trays</a></li>
-            <li><a href="about.html" style="color: var(--color-steel-silver);">German Metallurgy Standards</a></li>
-            <li><a href="faq.html" style="color: var(--color-steel-silver);">FAQ &amp; Procurement Terms</a></li>
+            <li><a href="faq.html" style="color: var(--color-steel-silver);">FAQs</a></li>
           </ul>
         </div>
 
@@ -508,11 +510,11 @@
           <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">INSTITUTIONAL POLICIES</h4>
           <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
             <li><a href="policies.html#refunds-returns" style="color: var(--color-steel-silver);">Refund, Return &amp; Cancellation Policy</a></li>
-            <li><a href="policies.html#shipping" style="color: var(--color-steel-silver);">International Shipping (EXW/FOB/DDP)</a></li>
+            <li><a href="policies.html#shipping" style="color: var(--color-steel-silver);">Shipping Policy (EXW/FOB/DDP)</a></li>
             <li><a href="policies.html#terms" style="color: var(--color-steel-silver);">Terms &amp; Conditions of Supply</a></li>
             <li><a href="policies.html#privacy" style="color: var(--color-steel-silver);">Privacy Policy &amp; GDPR</a></li>
             <li><a href="policies.html#compliance" style="color: var(--color-steel-silver);">Quality &amp; Regulatory Compliance</a></li>
-            <li><a href="faq.html" style="color: var(--color-steel-silver);">Procurement FAQ</a></li>
+            <li><a href="faq.html" style="color: var(--color-steel-silver);">FAQs</a></li>
           </ul>
         </div>
       </div>
