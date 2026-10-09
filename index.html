@@ -207,16 +207,18 @@
     })();
   </script>
 
-  <!-- Surgical Sets Hash Redirect -->
+  <!-- Legacy Hash Redirects (Surgical Sets & OEM Showcase) -->
   <script>
     (function() {
-      function checkSurgicalSetsHash() {
+      function checkLegacyHashRedirects() {
         if (window.location.hash === '#surgical-sets') {
           window.location.replace("surgical-sets.html");
+        } else if (window.location.hash === '#oem-showcase') {
+          window.location.replace("wholesale-custom-orders.html");
         }
       }
-      checkSurgicalSetsHash();
-      window.addEventListener('hashchange', checkSurgicalSetsHash);
+      checkLegacyHashRedirects();
+      window.addEventListener('hashchange', checkLegacyHashRedirects);
     })();
   </script>
 </head>
