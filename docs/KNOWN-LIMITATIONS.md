@@ -32,7 +32,7 @@
 ---
 
 ## 4. Compromised Admin Credential
-* **Observation:** The private token `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` was exposed in planning documents.
+* **Observation:** The private token `shpat_REDACTED_ADMIN_TOKEN` was exposed in legacy planning documents.
 * **Action Required:** Merchant must revoke this key in Shopify Admin under `Apps -> Develop apps / Headless`. The storefront exclusively uses the public, browser-safe token `1af9a69e60ce1bce5d803c2e53ba47e8`.
 
 ---

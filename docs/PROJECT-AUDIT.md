@@ -117,7 +117,7 @@ Defines the canonical 17 surgical disciplines and deep sub-specialties.
 ## 5. Security & Compromised Credential Audit
 
 ### 5.1 Compromised Credential Identification
-* During prior planning documentation, a private Shopify token (`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`) was recorded in a PDF document (`Competitive UI_UX Analysis.pdf`, page 1).
+* During prior planning documentation, a private Shopify token (`shpat_REDACTED_ADMIN_TOKEN`) was recorded in a PDF document (`Competitive UI_UX Analysis.pdf`, page 1).
 * **Classification:** **COMPROMISED.**
 * **Remediation Plan:**
   1. The token must be revoked in the Shopify Admin (`Apps -> Develop apps / Headless sales channel`).
